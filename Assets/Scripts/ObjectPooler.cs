@@ -22,9 +22,26 @@ public class ObjectPooler : MonoBehaviour
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
+    public void AddPool(string tag, GameObject prefab, int size)
+    {
+        if (poolDictionary == null) poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        if (poolDictionary.ContainsKey(tag)) return;
+
+        Queue<GameObject> objectPool = new Queue<GameObject>();
+
+        for (int i = 0; i < size; i++)
+        {
+            GameObject obj = Instantiate(prefab);
+            obj.SetActive(false);
+            objectPool.Enqueue(obj);
+        }
+
+        poolDictionary.Add(tag, objectPool);
+    }
+
     void Start()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        if (poolDictionary == null) poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         foreach (Pool pool in pools)
         {

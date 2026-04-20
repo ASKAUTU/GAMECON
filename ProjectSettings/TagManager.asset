@@ -8,10 +8,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - Wall
   - Water
   - UI
-  - Wall
+  - Player
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Wall
     uniqueID: 768431807
+    locked: 0
+  - name: UI
+    uniqueID: 4154810613
     locked: 0
   m_RenderingLayers:
   - Default

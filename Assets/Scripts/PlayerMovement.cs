@@ -15,18 +15,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float springDamping = 10f;   // How fast the bouncing dies down
     
     private Rigidbody2D rb;
+    private PlayerHealth playerHealth;
     private Vector2 moveInput;
     private Vector3 originalScale;
-    private Vector3 scaleVelocity; // Used for spring physics
+    private Vector3 scaleVelocity;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerHealth = GetComponent<PlayerHealth>();
         originalScale = transform.localScale;
     }
 
     private void FixedUpdate()
     {
+        if (playerHealth != null && playerHealth.IsStunned) return;
+
         rb.linearVelocity = moveInput * moveSpeed;
 
         if (moveInput != Vector2.zero)
