@@ -12,12 +12,15 @@ public class PlayerHealth : MonoBehaviour
     private PlayerMovement playerMovement;
     private Rigidbody2D rb;
     private Vector3 originalScale;
+    private GameObject deathVFXPrefab;
 
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
         originalScale = transform.localScale;
+        
+        deathVFXPrefab = Resources.Load<GameObject>("VFX/PlayerWallDead");
         
         GameObject spawnObj = GameObject.Find("Spawn");
         if (spawnObj != null) spawnPoint = spawnObj.transform;
@@ -30,14 +33,32 @@ public class PlayerHealth : MonoBehaviour
         // Check if the collided object is a child of "Level"
         if (collision.transform.parent != null && collision.transform.parent.name == "Level")
         {
-            // Calculate a point slightly inside the wall based on hit direction
             Vector2 hitPoint = collision.contacts[0].point;
             Vector2 hitNormal = collision.contacts[0].normal;
-            // Target is past the hit point, "inside" the wall
+            
+            // 1. Trigger Particle Effect
+            SpawnDeathVFX(hitPoint);
+
+            // 2. Start Death Sequence
             Vector3 targetInsideWall = (Vector3)(hitPoint - hitNormal * pushIntoWallAmount);
             targetInsideWall.z = transform.position.z;
 
             StartCoroutine(DieAndRespawn(targetInsideWall));
+        }
+    }
+
+    private void SpawnDeathVFX(Vector2 pos)
+    {
+        Quaternion prefabRotation = deathVFXPrefab != null ? deathVFXPrefab.transform.rotation : Quaternion.identity;
+
+        if (ObjectPooler.Instance != null && ObjectPooler.Instance.poolDictionary.ContainsKey("PlayerDeath"))
+        {
+            ObjectPooler.Instance.SpawnFromPool("PlayerDeath", pos, prefabRotation);
+        }
+        else if (deathVFXPrefab != null)
+        {
+            GameObject vfx = Instantiate(deathVFXPrefab, pos, prefabRotation);
+            Destroy(vfx, 2f);
         }
     }
 

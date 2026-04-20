@@ -1759,18 +1759,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 897145578172633898, guid: 4beac40347f64b04aa74afa7a1b74c44, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 897145578172633898, guid: 4beac40347f64b04aa74afa7a1b74c44, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1482688045
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368103328190990745, guid: 4beac40347f64b04aa74afa7a1b74c44, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4419311836765682029, guid: 4beac40347f64b04aa74afa7a1b74c44, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1811,25 +1799,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.482
       objectReference: {fileID: 0}
-    - target: {fileID: 5441031812511776850, guid: 4beac40347f64b04aa74afa7a1b74c44, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6233254440736799467, guid: 4beac40347f64b04aa74afa7a1b74c44, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6938104353731076372, guid: 4beac40347f64b04aa74afa7a1b74c44, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6938104353731076372, guid: 4beac40347f64b04aa74afa7a1b74c44, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322855790148792401, guid: 4beac40347f64b04aa74afa7a1b74c44, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4021846989117878296}
   - component: {fileID: 6233254440736799467}
   - component: {fileID: 5376842738721488896}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerMovementVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1368103328190990745}
   serializedVersion: 2
   m_LocalRotation: {x: -0.70678043, y: 0.02148106, z: -0.02148106, w: 0.70678043}
-  m_LocalPosition: {x: 0.03, y: 0.41, z: -0}
+  m_LocalPosition: {x: 0.03, y: 0.36, z: -0}
   m_LocalScale: {x: 1.6327838, y: 2.0199475, z: -1.7821239}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1981,7 +1981,7 @@ ParticleSystem:
     radial:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2422,7 +2422,7 @@ ParticleSystem:
       m_Bits: 4294967295
     influenceList: []
   ClampVelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -2643,7 +2643,7 @@ ParticleSystem:
     drag:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4855,7 +4855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8149724531750411392}
   - component: {fileID: 897145578172633898}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4922,8 +4922,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1482688045
+  m_SortingLayer: 1
   m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4130640169021434097, guid: 6cfc6e6f9108ffc4fa69787b2bb4545d, type: 3}
@@ -4950,7 +4950,7 @@ GameObject:
   - component: {fileID: 2790819735996085705}
   - component: {fileID: 6614393206171583791}
   - component: {fileID: 2231931645982931311}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5101,6 +5101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   suckDuration: 0.5
   stretchIntensity: 3
+  pushIntoWallAmount: 1
 --- !u!1 &7322855790148792401
 GameObject:
   m_ObjectHideFlags: 0
@@ -5110,7 +5111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6933533464908166908}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

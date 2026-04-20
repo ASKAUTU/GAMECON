@@ -41,6 +41,7 @@ Material:
     - _NoiseScale: 100
     - _NoiseStrength: 0.1
     - _Power: 1
+    - _SineTime: 0.7
     - _Step: 0.54
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
