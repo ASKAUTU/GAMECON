@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 8d44eb919935bb74baec6d135c827655
+  productGUID: 40af3da7b200b1744897f20445947c7b
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: GGMGDC
+  productName: Shape
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -602,14 +602,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: GGMGDC
+  metroPackageName: Shape
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: GGMGDC
+  metroApplicationDescription: Shape
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -680,10 +680,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: d57ffb7a-2a80-469a-b66f-d4e215f86060
+  cloudProjectId: 24f3b92f-517b-4dec-b0b5-a6372e728694
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: GGMGDC
+  projectName: Shape
   organizationId: rushdeveloperxd
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
