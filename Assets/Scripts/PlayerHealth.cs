@@ -6,8 +6,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float suckDuration = 0.4f;
     [SerializeField] private float stretchIntensity = 4f;
     [SerializeField] private float pushIntoWallAmount = 1.0f; // How far to push into the wall
+    [SerializeField] private float vfxOffsetFromWall = 0.0f; // 0 means exactly on the surface (half-in, half-out)
     
     private Transform spawnPoint;
+    private Vector2 lastHitNormal; // Store the normal of the wall we hit
     private bool isDying = false;
     private PlayerMovement playerMovement;
     private Rigidbody2D rb;
@@ -30,20 +32,15 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isDying) return;
 
-        // Check if the collided object is a child of "Level"
         if (collision.transform.parent != null && collision.transform.parent.name == "Level")
         {
             Vector2 hitPoint = collision.contacts[0].point;
-            Vector2 hitNormal = collision.contacts[0].normal;
+            lastHitNormal = collision.contacts[0].normal; // Store normal to know which way is "out"
             
-            // 1. Trigger Particle Effect
-            SpawnDeathVFX(hitPoint);
-
-            // 2. Start Death Sequence
-            Vector3 targetInsideWall = (Vector3)(hitPoint - hitNormal * pushIntoWallAmount);
+            Vector3 targetInsideWall = (Vector3)(hitPoint - lastHitNormal * pushIntoWallAmount);
             targetInsideWall.z = transform.position.z;
 
-            StartCoroutine(DieAndRespawn(targetInsideWall));
+            StartCoroutine(DieAndRespawn(targetInsideWall, hitPoint));
         }
     }
 
@@ -62,7 +59,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private IEnumerator DieAndRespawn(Vector3 targetPos)
+    private IEnumerator DieAndRespawn(Vector3 targetPos, Vector2 hitPoint)
     {
         isDying = true;
         
@@ -71,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
 
-        // 2. Sucking Effect (Move DEEP into wall while stretching and shrinking)
+        // 2. Sucking Effect
         float elapsed = 0;
         Vector3 startPos = transform.position;
 
@@ -79,14 +76,10 @@ public class PlayerHealth : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = elapsed / suckDuration;
-            // Use an easing function for a snappier "suck"
             float easeT = t * t; 
 
-            // Move towards the inside of the wall
             transform.position = Vector3.Lerp(startPos, targetPos, easeT);
 
-            // Dynamic Stretch/Squash:
-            // Y increases for stretch, but overall scale decreases towards 0 to "disappear"
             float currentVolume = 1.0f - easeT; 
             float stretchY = originalScale.y * (1 + (t * stretchIntensity)) * currentVolume;
             float shrinkX = originalScale.x * (1 - (t * 0.9f)) * currentVolume;
@@ -96,11 +89,15 @@ public class PlayerHealth : MonoBehaviour
             yield return null;
         }
 
-        // Make sure it's completely invisible before teleporting
+        // 3. Trigger Particle Effect (Spawn at wall surface + small offset towards outside)
+        Vector2 vfxPos = hitPoint + (lastHitNormal * vfxOffsetFromWall);
+        SpawnDeathVFX(vfxPos);
+
+        // Make sure it's completely invisible
         transform.localScale = Vector3.zero;
         yield return new WaitForSeconds(0.1f);
 
-        // 3. Respawn
+        // 4. Respawn
         if (spawnPoint != null)
         {
             transform.position = spawnPoint.position;
