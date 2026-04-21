@@ -86,6 +86,18 @@ public class PostProcessController : MonoBehaviour
         vignette.color.Override(defaultVignetteColor);
     }
 
+    public void HitStop(float duration = 0.05f)
+    {
+        StartCoroutine(HitStopRoutine(duration));
+    }
+
+    private IEnumerator HitStopRoutine(float duration)
+    {
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = 1f;
+    }
+
     public void PlayStartEffect(float duration)
     {
         if (chromaticAberration == null || lensDistortion == null) return;

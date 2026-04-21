@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
     private float nextAttackTime;
 
     private EnemyHealth enemyHealth;
+    private GameObject attackNoticePrefab;
+    private GameObject currentNotice;
 
     private void Awake()
     {
@@ -37,6 +39,23 @@ public class EnemyController : MonoBehaviour
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if (p == null) p = GameObject.Find("Player");
         if (p != null) player = p.transform;
+
+        // Register AttackNotice Pool
+        attackNoticePrefab = Resources.Load<GameObject>("VFX/AttackNotice");
+        if (attackNoticePrefab != null && ObjectPooler.Instance != null)
+        {
+            ObjectPooler.Instance.AddPool("AttackNotice", attackNoticePrefab, 10);
+        }
+    }
+
+    private void OnDisable()
+    {
+        // If enemy is disabled/destroyed, ensure the notice is handled
+        if (currentNotice != null && currentNotice.activeInHierarchy)
+        {
+            ObjectPooler.Instance.ReturnToPool("AttackNotice", currentNotice);
+            currentNotice = null;
+        }
     }
 
     private void FixedUpdate()
@@ -93,9 +112,28 @@ public class EnemyController : MonoBehaviour
         isAttacking = true;
         rb.linearVelocity = Vector2.zero;
 
+        float windUpTime = 0.6f;
+
+        // 0. Show Attack Notice
+        currentNotice = null;
+        if (ObjectPooler.Instance != null)
+        {
+            currentNotice = ObjectPooler.Instance.SpawnFromPool("AttackNotice", transform.position, Quaternion.identity);
+            if (currentNotice != null)
+            {
+                currentNotice.transform.SetParent(transform);
+                currentNotice.transform.localPosition = Vector3.zero;
+                
+                AttackNotice noticeScript = currentNotice.GetComponent<AttackNotice>();
+                if (noticeScript != null)
+                {
+                    noticeScript.SetDuration(windUpTime);
+                }
+            }
+        }
+
         // 1. Wind up (Squash down)
         float elapsed = 0;
-        float windUpTime = 0.3f;
         while (elapsed < windUpTime)
         {
             elapsed += Time.deltaTime;
@@ -103,6 +141,8 @@ public class EnemyController : MonoBehaviour
             transform.localScale = new Vector3(originalScale.x * 1.3f, originalScale.y * 0.7f, originalScale.z);
             yield return null;
         }
+
+        currentNotice = null;
 
         // 2. Dash/Stretch Attack (The move juice effect)
         elapsed = 0;
