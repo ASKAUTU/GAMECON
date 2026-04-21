@@ -10,9 +10,12 @@ public class Weapon_SQIGUN : MonoBehaviour
     private float nextFireTime;
     private Camera mainCam;
 
+    private PlayerFeedback playerFeedback;
+
     private void Awake()
     {
         mainCam = Camera.main;
+        playerFeedback = GetComponentInParent<PlayerFeedback>();
     }
 
     private void Update()
@@ -63,6 +66,7 @@ public class Weapon_SQIGUN : MonoBehaviour
             }
         }
         
+        if (playerFeedback != null) playerFeedback.PlayAttackJuice();
         if (CameraShake.Instance != null) CameraShake.Instance.Shake(0.1f, 0.05f);
     }
 }

@@ -44,10 +44,17 @@ public class Bullet : MonoBehaviour, IPoolable
         if (damageable != null)
         {
             damageable.TakeDamage(damage, transform.position);
+            ObjectPooler.Instance.SpawnFromPool("BulletHit", transform.position, Quaternion.identity);
+            ObjectPooler.Instance.ReturnToPool("Bullet", gameObject);
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            ObjectPooler.Instance.SpawnFromPool("BulletHit", transform.position, Quaternion.identity);
             ObjectPooler.Instance.ReturnToPool("Bullet", gameObject);
         }
         else if (collision.transform.parent != null && collision.transform.parent.name == "Level")
         {
+            ObjectPooler.Instance.SpawnFromPool("BulletHit", transform.position, Quaternion.identity);
             ObjectPooler.Instance.ReturnToPool("Bullet", gameObject);
         }
     }

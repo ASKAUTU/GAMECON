@@ -13,6 +13,7 @@ public class PlayerDeathFeedback : MonoBehaviour
     [SerializeField] private float stretchIntensity = 4f;
     [SerializeField] private float pushIntoWallAmount = 1.0f;
     [SerializeField] private float vfxOffsetFromWall = 0.0f;
+    [SerializeField] private float respawnDelay = 1.0f;
 
     private Vector3 originalScale;
     private Color originalColor;
@@ -27,7 +28,10 @@ public class PlayerDeathFeedback : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
         
-        originalScale = transform.localScale;
+        // Ensure we get the "real" original scale
+        originalScale = new Vector3(0.3f, 0.3f, 1f); // Fallback to expected scale if unsure
+        if (transform.localScale != Vector3.zero) originalScale = transform.localScale;
+        
         if (sr != null) originalColor = sr.color;
 
         deathVFXPrefab = Resources.Load<GameObject>("VFX/PlayerWallDead");
@@ -65,6 +69,7 @@ public class PlayerDeathFeedback : MonoBehaviour
 
     private void StartDeathAnimation(Vector3 targetPos, Vector2 hitPoint)
     {
+        StopAllCoroutines(); // Stop any juice or movement
         StartCoroutine(DieAndRespawnRoutine(targetPos, hitPoint));
     }
 
@@ -74,7 +79,7 @@ public class PlayerDeathFeedback : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
 
-        // 1. Suck into wall animation
+        // 1. Suck into wall animation (or just squash if no wall)
         float elapsed = 0;
         Vector3 startPos = transform.position;
         while (elapsed < suckDuration)
@@ -91,11 +96,12 @@ public class PlayerDeathFeedback : MonoBehaviour
             yield return null;
         }
 
-        // 2. Spawn VFX
+        // 2. Spawn VFX and hide
         SpawnDeathVFX(hitPoint + (lastHitNormal * vfxOffsetFromWall));
         transform.localScale = Vector3.zero;
+        if (sr != null) sr.enabled = false; // Completely hide
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(respawnDelay);
 
         // 3. Respawn
         playerHealth.ResetHealth();
@@ -105,8 +111,12 @@ public class PlayerDeathFeedback : MonoBehaviour
     {
         transform.position = spawnPoint != null ? spawnPoint.position : Vector3.zero;
         rb.simulated = true;
+        if (sr != null) 
+        {
+            sr.enabled = true;
+            sr.color = originalColor;
+        }
         if (playerMovement != null) playerMovement.enabled = true;
-        if (sr != null) sr.color = originalColor;
         StartCoroutine(PopUpRoutine());
     }
 
@@ -125,12 +135,23 @@ public class PlayerDeathFeedback : MonoBehaviour
 
     private void SpawnDeathVFX(Vector2 pos)
     {
+        if (deathVFXPrefab == null) return;
+        
+        Quaternion rotation = deathVFXPrefab.transform.rotation;
+        GameObject vfxGo = null;
+        
         if (ObjectPooler.Instance != null && ObjectPooler.Instance.poolDictionary.ContainsKey("PlayerDeath"))
-            ObjectPooler.Instance.SpawnFromPool("PlayerDeath", pos, Quaternion.identity);
-        else if (deathVFXPrefab != null)
+            vfxGo = ObjectPooler.Instance.SpawnFromPool("PlayerDeath", pos, rotation);
+        else
         {
-            GameObject vfx = Instantiate(deathVFXPrefab, pos, Quaternion.identity);
-            Destroy(vfx, 2f);
+            vfxGo = Instantiate(deathVFXPrefab, pos, rotation);
+            Destroy(vfxGo, 2f);
+        }
+
+        if (vfxGo != null)
+        {
+            ParticleSystem[] ps = vfxGo.GetComponentsInChildren<ParticleSystem>();
+            foreach (var p in ps) p.Play();
         }
     }
 }

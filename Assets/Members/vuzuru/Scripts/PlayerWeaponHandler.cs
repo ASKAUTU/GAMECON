@@ -26,6 +26,13 @@ public class PlayerWeaponHandler : MonoBehaviour
             {
                 ObjectPooler.Instance.AddPool("Bullet", bulletPrefab, 5);
             }
+
+            // Register BulletHit Pool
+            GameObject hitEffectPrefab = Resources.Load<GameObject>("VFX/BulletHit");
+            if (hitEffectPrefab != null && ObjectPooler.Instance != null)
+            {
+                ObjectPooler.Instance.AddPool("BulletHit", hitEffectPrefab, 10);
+            }
             
             // 만약 프리팹에 스크립트가 없다면 추가 (보통은 붙어있음)
             if (currentWeapon.GetComponent<Weapon_SQIGUN>() == null)

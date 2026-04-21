@@ -101,13 +101,16 @@ public class WaveManager : MonoBehaviour
             // Pick a random zone
             Transform zone = spawnZones[Random.Range(0, spawnZones.Length)];
             
-            // Generate random position within zone scale (assuming it defines the area)
-            Vector2 randomPos = (Vector2)zone.position + new Vector2(
-                Random.Range(-zone.localScale.x/2, zone.localScale.x/2),
-                Random.Range(-zone.localScale.y/2, zone.localScale.y/2)
+            // localSpace의 -0.5 ~ 0.5 범위를 월드 좌표로 변환 (로컬 기준 스폰)
+            Vector3 localRandomPos = new Vector3(
+                Random.Range(-0.5f, 0.5f),
+                Random.Range(-0.5f, 0.5f),
+                0
             );
+            
+            Vector3 worldPos = zone.TransformPoint(localRandomPos);
 
-            GameObject enemy = Instantiate(prefab, randomPos, Quaternion.identity);
+            GameObject enemy = Instantiate(prefab, worldPos, Quaternion.identity);
             activeEnemies.Add(enemy);
         }
     }

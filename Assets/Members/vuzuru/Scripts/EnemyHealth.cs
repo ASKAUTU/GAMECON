@@ -85,19 +85,26 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private void SpawnDeathVFX()
     {
+        GameObject vfxPrefab = Resources.Load<GameObject>("VFX/PlayerWallDead");
+        if (vfxPrefab == null) return;
+
+        Quaternion rotation = vfxPrefab.transform.rotation;
+        GameObject vfxGo = null;
+        
         if (ObjectPooler.Instance != null && ObjectPooler.Instance.poolDictionary.ContainsKey("PlayerDeath"))
         {
-            ObjectPooler.Instance.SpawnFromPool("PlayerDeath", transform.position, Quaternion.identity);
+            vfxGo = ObjectPooler.Instance.SpawnFromPool("PlayerDeath", transform.position, rotation);
         }
         else
         {
-            // 풀링 실패 시 직접 생성 시도
-            GameObject vfx = Resources.Load<GameObject>("VFX/PlayerWallDead");
-            if (vfx != null)
-            {
-                GameObject go = Instantiate(vfx, transform.position, Quaternion.identity);
-                Destroy(go, 2f);
-            }
+            vfxGo = Instantiate(vfxPrefab, transform.position, rotation);
+            Destroy(vfxGo, 2f);
+        }
+
+        if (vfxGo != null)
+        {
+            ParticleSystem[] ps = vfxGo.GetComponentsInChildren<ParticleSystem>();
+            foreach (var p in ps) p.Play();
         }
     }
 }
