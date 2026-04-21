@@ -39,10 +39,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     {
         currentHealth -= amount;
         
-        // 1. Flash effect
+        // 1. Flash and HitStop
         if (sr != null) StartCoroutine(FlashRoutine());
+        if (PostProcessController.Instance != null && amount > 0) PostProcessController.Instance.HitStop(0.05f);
 
-        // 2. Knockback
+        // 2. Knockback and Tilt
         if (rb != null)
         {
             StopCoroutine(nameof(KnockbackRoutine));
@@ -59,14 +60,36 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     {
         IsStunned = true;
         
-        Vector2 knockbackDir = ((Vector2)transform.position - attackerPos).normalized;
+        Vector2 playerPos = attackerPos;
+        Vector2 enemyPos = transform.position;
+        Vector2 knockbackDir = (enemyPos - playerPos).normalized;
         if (knockbackDir == Vector2.zero) knockbackDir = -transform.up;
         
         rb.linearVelocity = knockbackDir * 6f;
 
-        // 0.2초 동안 스턴 (밀려나는 시간 확보)
-        yield return new WaitForSeconds(0.2f);
-        
+        // Tilt Juice
+        float randomTilt = Random.Range(15f, 25f) * (Random.value > 0.5f ? 1f : -1f);
+        Quaternion targetRotation = Quaternion.Euler(0, 0, randomTilt);
+        Quaternion originalRotation = transform.rotation;
+
+        float elapsed = 0;
+        float duration = 0.3f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            
+            // Tilt and then return
+            if (t < 0.3f)
+                transform.rotation = Quaternion.Lerp(originalRotation, targetRotation, t / 0.3f);
+            else
+                transform.rotation = Quaternion.Lerp(targetRotation, originalRotation, (t - 0.3f) / 0.7f);
+
+            yield return null;
+        }
+
+        transform.rotation = originalRotation;
         IsStunned = false;
     }
 

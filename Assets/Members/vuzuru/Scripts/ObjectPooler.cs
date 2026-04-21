@@ -66,10 +66,23 @@ public class ObjectPooler : MonoBehaviour
             return null;
         }
 
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        GameObject objectToSpawn = null;
+        int attempts = poolDictionary[tag].Count;
 
-        // If the object is active, it means we ran out of objects and are reusing the oldest one.
-        // Alternatively, we could instantiate a new one here to expand the pool.
+        // Find a valid object in the queue
+        for (int i = 0; i < attempts; i++)
+        {
+            objectToSpawn = poolDictionary[tag].Dequeue();
+            if (objectToSpawn != null) break;
+        }
+
+        // If no valid object found or all were destroyed, we might need a fallback or create a new one
+        if (objectToSpawn == null)
+        {
+            // Here we could try to instantiate a new one from a stored prefab if we had the reference
+            Debug.LogWarning("Pool " + tag + " is empty or contains only destroyed objects.");
+            return null;
+        }
         
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
@@ -89,7 +102,11 @@ public class ObjectPooler : MonoBehaviour
 
     public void ReturnToPool(string tag, GameObject obj)
     {
+        if (obj == null) return;
+        
         obj.SetActive(false);
+        obj.transform.SetParent(null); // Unparent to prevent destruction if parent is destroyed
+
         IPoolable poolable = obj.GetComponent<IPoolable>();
         if (poolable != null)
         {
