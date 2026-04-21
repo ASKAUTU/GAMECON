@@ -1,126 +1,68 @@
 using UnityEngine;
-using System.Collections;
+using System;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float suckDuration = 0.4f;
-    [SerializeField] private float stretchIntensity = 4f;
-    [SerializeField] private float pushIntoWallAmount = 1.0f; // How far to push into the wall
-    [SerializeField] private float vfxOffsetFromWall = 0.0f; // 0 means exactly on the surface (half-in, half-out)
-    
-    private Transform spawnPoint;
-    private Vector2 lastHitNormal; // Store the normal of the wall we hit
-    private bool isDying = false;
-    private PlayerMovement playerMovement;
-    private Rigidbody2D rb;
-    private Vector3 originalScale;
-    private GameObject deathVFXPrefab;
+    [Header("Health Stats")]
+    [SerializeField] private float maxHealth = 100f;
+    private float currentHealth;
+
+    public float CurrentHealth => currentHealth;
+    public float MaxHealth => maxHealth;
+
+    public event Action<float, float, Vector2> OnDamageTaken;
+    public event Action<Vector3, Vector2> OnDeath; // targetPos, hitPoint (벽 사망 연출용)
+    public event Action OnRespawn;
+    public event Action<Vector2> OnParry; // attackerPos
+
+    public bool IsStunned { get; set; } = false;
+    public bool IsDying { get; private set; } = false;
+    public bool IsParrying { get; set; } = false;
 
     private void Awake()
     {
-        playerMovement = GetComponent<PlayerMovement>();
-        rb = GetComponent<Rigidbody2D>();
-        originalScale = transform.localScale;
-        
-        deathVFXPrefab = Resources.Load<GameObject>("VFX/PlayerWallDead");
-        
-        GameObject spawnObj = GameObject.Find("Spawn");
-        if (spawnObj != null) spawnPoint = spawnObj.transform;
+        currentHealth = maxHealth;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void TakeDamage(float amount, Vector2 attackerPosition)
     {
-        if (isDying) return;
+        Debug.Log($"[PlayerHealth] TakeDamage called. Amount: {amount}, IsDying: {IsDying}");
+        if (IsDying) return;
 
-        if (collision.transform.parent != null && collision.transform.parent.name == "Level")
+        if (IsParrying)
         {
-            Vector2 hitPoint = collision.contacts[0].point;
-            lastHitNormal = collision.contacts[0].normal; // Store normal to know which way is "out"
-            
-            Vector3 targetInsideWall = (Vector3)(hitPoint - lastHitNormal * pushIntoWallAmount);
-            targetInsideWall.z = transform.position.z;
-
-            StartCoroutine(DieAndRespawn(targetInsideWall, hitPoint));
+            Debug.Log("[PlayerHealth] PARRY SUCCESS!");
+            OnParry?.Invoke(attackerPosition);
+            return;
         }
-    }
 
-    private void SpawnDeathVFX(Vector2 pos)
-    {
-        Quaternion prefabRotation = deathVFXPrefab != null ? deathVFXPrefab.transform.rotation : Quaternion.identity;
+        currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        if (ObjectPooler.Instance != null && ObjectPooler.Instance.poolDictionary.ContainsKey("PlayerDeath"))
+        Debug.Log($"[PlayerHealth] New Health: {currentHealth}/{maxHealth}. Invoking OnDamageTaken.");
+        OnDamageTaken?.Invoke(currentHealth, maxHealth, attackerPosition);
+
+        if (currentHealth <= 0)
         {
-            ObjectPooler.Instance.SpawnFromPool("PlayerDeath", pos, prefabRotation);
-        }
-        else if (deathVFXPrefab != null)
-        {
-            GameObject vfx = Instantiate(deathVFXPrefab, pos, prefabRotation);
-            Destroy(vfx, 2f);
+            Debug.Log("[PlayerHealth] Health reached 0. Calling Kill.");
+            Kill(transform.position, transform.position);
         }
     }
 
-    private IEnumerator DieAndRespawn(Vector3 targetPos, Vector2 hitPoint)
+    // 벽 충돌 등 즉사 시 호출
+    public void Kill(Vector3 targetPos, Vector2 hitPoint)
     {
-        isDying = true;
-        
-        // 1. Disable movement and physics
-        if (playerMovement != null) playerMovement.enabled = false;
-        rb.linearVelocity = Vector2.zero;
-        rb.simulated = false;
+        if (IsDying) return;
+        IsDying = true;
+        OnDeath?.Invoke(targetPos, hitPoint);
+    }
 
-        // 2. Sucking Effect
-        float elapsed = 0;
-        Vector3 startPos = transform.position;
-
-        while (elapsed < suckDuration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / suckDuration;
-            float easeT = t * t; 
-
-            transform.position = Vector3.Lerp(startPos, targetPos, easeT);
-
-            float currentVolume = 1.0f - easeT; 
-            float stretchY = originalScale.y * (1 + (t * stretchIntensity)) * currentVolume;
-            float shrinkX = originalScale.x * (1 - (t * 0.9f)) * currentVolume;
-            
-            transform.localScale = new Vector3(shrinkX, stretchY, originalScale.z);
-
-            yield return null;
-        }
-
-        // 3. Trigger Particle Effect (Spawn at wall surface + small offset towards outside)
-        Vector2 vfxPos = hitPoint + (lastHitNormal * vfxOffsetFromWall);
-        SpawnDeathVFX(vfxPos);
-
-        // Make sure it's completely invisible
-        transform.localScale = Vector3.zero;
-        yield return new WaitForSeconds(0.1f);
-
-        // 4. Respawn
-        if (spawnPoint != null)
-        {
-            transform.position = spawnPoint.position;
-        }
-        else
-        {
-            transform.position = Vector3.zero;
-        }
-
-        // 4. Reset state with a little "pop-in" bounce
-        float popElapsed = 0;
-        float popDuration = 0.2f;
-        while (popElapsed < popDuration)
-        {
-            popElapsed += Time.deltaTime;
-            transform.localScale = Vector3.Lerp(Vector3.zero, originalScale, popElapsed / popDuration);
-            yield return null;
-        }
-        
-        transform.localScale = originalScale;
-        rb.simulated = true;
-        if (playerMovement != null) playerMovement.enabled = true;
-        
-        isDying = false;
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        IsDying = false;
+        IsStunned = false;
+        OnRespawn?.Invoke();
+        OnDamageTaken?.Invoke(currentHealth, maxHealth, Vector2.zero);
     }
 }
