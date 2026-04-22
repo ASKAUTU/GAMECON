@@ -10,12 +10,17 @@ public class Weapon_SQIGUN : MonoBehaviour
     private float nextFireTime;
     private Camera mainCam;
 
+    [SerializeField] private MuzzleFlash muzzleFlash;
     private PlayerFeedback playerFeedback;
 
     private void Awake()
     {
         mainCam = Camera.main;
         playerFeedback = GetComponentInParent<PlayerFeedback>();
+        if (muzzleFlash == null) muzzleFlash = GetComponentInChildren<MuzzleFlash>();
+        
+        if (muzzleFlash == null) Debug.LogWarning("[Weapon_SQIGUN] MuzzleFlash component not found!");
+        else Debug.Log($"[Weapon_SQIGUN] MuzzleFlash successfully linked to {muzzleFlash.gameObject.name}");
     }
 
     private void Update()
@@ -55,6 +60,8 @@ public class Weapon_SQIGUN : MonoBehaviour
         Vector3 spawnPos = firePoint != null ? firePoint.position : transform.position;
         GameObject bullet = ObjectPooler.Instance.SpawnFromPool(bulletTag, spawnPos, transform.rotation);
         
+        if (muzzleFlash != null) muzzleFlash.Play();
+
         // 플레이어 본인(부모)과의 충돌 방지 (레이어 설정이 안 되어 있을 경우 대비)
         if (bullet != null)
         {

@@ -86,6 +86,9 @@ public class PlayerParry : MonoBehaviour
         // 3. Camera Shake
         if (CameraShake.Instance != null) CameraShake.Instance.Shake(0.1f, 0.1f);
 
+        // 4. Juice Effect
+        if (playerFeedback != null) playerFeedback.PlayParrySuccessJuice();
+
         // 패링 성공 시 로직
         // 쿨타임 초기화 (즉시 재시전 가능)
         nextParryTime = 0;
