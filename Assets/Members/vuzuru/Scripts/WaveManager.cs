@@ -79,38 +79,55 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnWave()
     {
-        if (currentWave == 10)
+        // CSV에서 현재 웨이브 정보 찾기 (예: SQB003_1)
+        // 여기서는 기본적으로 SQB003_웨이브번호 형태나 다른 키를 사용할 수 있음
+        // 만약 특정 웨이브에 여러 종류가 있다면 확장이 필요하지만, 현재는 키_웨이브번호 패턴으로 검색
+        
+        string waveKey = $"SQB003_{currentWave}";
+        MonsterStat stat = MonsterDataManager.Instance.GetStat(waveKey);
+
+        if (string.IsNullOrEmpty(stat.Key))
         {
-            // Boss Wave
-            SpawnEnemy(bossEnemyPrefab ?? normalEnemyPrefab, 1);
-        }
-        else
-        {
-            // Normal Wave: Amount increases with wave number
+            // 데이터가 없으면 기본값으로 생성
             int enemyCount = 3 + (currentWave * 2);
-            SpawnEnemy(normalEnemyPrefab, enemyCount);
+            SpawnEnemyWithStats(normalEnemyPrefab, enemyCount, 30 + (currentWave * 5), 10 + (currentWave * 2), 1.8f, 10 + (currentWave * 5));
+            return;
         }
+
+        // Prefab 결정 (SQB003 -> Sqibo)
+        GameObject prefab = normalEnemyPrefab;
+        if (stat.Key.StartsWith("SQB003"))
+        {
+            prefab = Resources.Load<GameObject>("Prefabs/Enemy/Sqibo");
+        }
+        else if (stat.Key.StartsWith("E004"))
+        {
+            // 다른 적 프리팹이 있다면 추가
+        }
+
+        int count = stat.SpawnCount > 0 ? stat.SpawnCount : 3 + (currentWave * 2);
+        SpawnEnemyWithStats(prefab ?? normalEnemyPrefab, count, stat.HP, stat.ATK, stat.Speed, stat.ExpYield);
     }
 
-    private void SpawnEnemy(GameObject prefab, int count)
+    private void SpawnEnemyWithStats(GameObject prefab, int count, float hp, float atk, float speed, float exp)
     {
         if (prefab == null || spawnZones.Length == 0) return;
 
         for (int i = 0; i < count; i++)
         {
-            // Pick a random zone
             Transform zone = spawnZones[Random.Range(0, spawnZones.Length)];
-            
-            // localSpace의 -0.5 ~ 0.5 범위를 월드 좌표로 변환 (로컬 기준 스폰)
-            Vector3 localRandomPos = new Vector3(
-                Random.Range(-0.5f, 0.5f),
-                Random.Range(-0.5f, 0.5f),
-                0
-            );
-            
+            Vector3 localRandomPos = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);
             Vector3 worldPos = zone.TransformPoint(localRandomPos);
 
             GameObject enemy = Instantiate(prefab, worldPos, Quaternion.identity);
+            
+            // Stats 적용
+            EnemyController controller = enemy.GetComponent<EnemyController>();
+            if (controller != null) controller.Initialize(speed, atk);
+
+            EnemyHealth health = enemy.GetComponent<EnemyHealth>();
+            if (health != null) health.Initialize(hp, exp);
+
             activeEnemies.Add(enemy);
         }
     }

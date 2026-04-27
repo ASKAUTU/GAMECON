@@ -24,6 +24,12 @@ public class EnemyController : MonoBehaviour
     private GameObject attackNoticePrefab;
     private GameObject currentNotice;
 
+    public void Initialize(float speed, float dmg)
+    {
+        moveSpeed = speed;
+        damage = dmg;
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
