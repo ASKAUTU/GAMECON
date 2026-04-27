@@ -1,0 +1,949 @@
+fileFormatVersion: 2
+guid: 193e5850acd0fae42bd52ce0027a09ee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2826514477226123342
+    second: Card Parts_0
+  - first:
+      213: -3903897537087385334
+    second: Card Parts_1
+  - first:
+      213: -8609234028982309204
+    second: Card Parts_2
+  - first:
+      213: 8805943899190568700
+    second: Card Parts_3
+  - first:
+      213: -3312018466252136901
+    second: Card Parts_4
+  - first:
+      213: 5927827557609266187
+    second: Card Parts_5
+  - first:
+      213: -5194073847363104300
+    second: Card Parts_6
+  - first:
+      213: 7717720217513509435
+    second: Card Parts_7
+  - first:
+      213: -5776403976637503177
+    second: Card Parts_8
+  - first:
+      213: -3467764060128656113
+    second: Card Parts_9
+  - first:
+      213: -4706355537438458000
+    second: Card Parts_10
+  - first:
+      213: -3949335598609407377
+    second: Card Parts_11
+  - first:
+      213: 8063180233875518666
+    second: Card Parts_12
+  - first:
+      213: -3015413500841631884
+    second: Card Parts_13
+  - first:
+      213: -7974835179270376054
+    second: Card Parts_14
+  - first:
+      213: -2493939067589309326
+    second: Card Parts_15
+  - first:
+      213: -4226986322801199326
+    second: Card Parts_16
+  - first:
+      213: 2018704907096444335
+    second: Card Parts_17
+  - first:
+      213: -4295479031499193284
+    second: Card Parts_18
+  - first:
+      213: -2230642167361874915
+    second: Card Parts_19
+  - first:
+      213: 1658666585890451022
+    second: Card Parts_20
+  - first:
+      213: -2460560876217210086
+    second: Card Parts_21
+  - first:
+      213: 4680614275084887295
+    second: Card Parts_22
+  - first:
+      213: -4242742611210831520
+    second: Card Parts_23
+  - first:
+      213: -8101030444673714191
+    second: Card Parts_24
+  - first:
+      213: -3068213683412038267
+    second: Card Parts_25
+  - first:
+      213: 5784669937672489671
+    second: Card Parts_26
+  - first:
+      213: 312028990381540438
+    second: Card Parts_27
+  - first:
+      213: -4344073479678383834
+    second: Card Parts_28
+  - first:
+      213: 2443031607822364017
+    second: Card Parts_29
+  - first:
+      213: 2819438277173273172
+    second: Card Parts_30
+  - first:
+      213: 1167517238568445656
+    second: Card Parts_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Card Parts_0
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1880
+        width: 22
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e40ef8701fbc93720800000000000000
+      internalID: 2826514477226123342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_1
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 1907
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a01526eafd192d9c0800000000000000
+      internalID: -3903897537087385334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_2
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 1890
+        width: 12
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caeed4aa34bd58880800000000000000
+      internalID: -8609234028982309204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_3
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1833
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf6a547025ff43a70800000000000000
+      internalID: 8805943899190568700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_4
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 1833
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3ed185b0c85902d0800000000000000
+      internalID: -3312018466252136901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_5
+      rect:
+        serializedVersion: 2
+        x: 1267
+        y: 1847
+        width: 10
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0c5215b1cfd34250800000000000000
+      internalID: 5927827557609266187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1829
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d196ceea51fae7b0800000000000000
+      internalID: -5194073847363104300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1833
+        width: 25
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b324eb8c5a9da1b60800000000000000
+      internalID: 7717720217513509435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_8
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 1663
+        width: 1072
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7392e5d103716dfa0800000000000000
+      internalID: -5776403976637503177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_9
+      rect:
+        serializedVersion: 2
+        x: 1309
+        y: 1829
+        width: 47
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f054a27d5f600efc0800000000000000
+      internalID: -3467764060128656113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_10
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 1811
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07fb944f29aafaeb0800000000000000
+      internalID: -4706355537438458000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_11
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 1528
+        width: 124
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f62e41292342139c0800000000000000
+      internalID: -3949335598609407377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_12
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 1620
+        width: 592
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac4f910c3bb26ef60800000000000000
+      internalID: 8063180233875518666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_13
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 1528
+        width: 126
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47fda67b5691726d0800000000000000
+      internalID: -3015413500841631884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_14
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 1598
+        width: 558
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a85fc4d28a1b35190800000000000000
+      internalID: -7974835179270376054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_15
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 827
+        width: 178
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27cced8a1afb36dd0800000000000000
+      internalID: -2493939067589309326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_16
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 953
+        width: 20
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 227fffeb55ab655c0800000000000000
+      internalID: -4226986322801199326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_17
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 973
+        width: 12
+        height: 557
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fad42ddda61e30c10800000000000000
+      internalID: 2018704907096444335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_18
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 827
+        width: 178
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c340a5b44946364c0800000000000000
+      internalID: -4295479031499193284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_19
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 973
+        width: 14
+        height: 557
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d14536964ca2b01e0800000000000000
+      internalID: -2230642167361874915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_20
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 953
+        width: 18
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4e6fccc874c40710800000000000000
+      internalID: 1658666585890451022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_21
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 827
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1b69d07be45addd0800000000000000
+      internalID: -2460560876217210086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_22
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 891
+        width: 554
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff4ae0d52e1e4f040800000000000000
+      internalID: 4680614275084887295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_23
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 827
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0697d59f210ce15c0800000000000000
+      internalID: -4242742611210831520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_24
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 74
+        width: 1248
+        height: 801
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7399e4bbb539f80800000000000000
+      internalID: -8101030444673714191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_25
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 863
+        width: 596
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58d8b3939e38b65d0800000000000000
+      internalID: -3068213683412038267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_26
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 199
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ca89d9e8a6474050800000000000000
+      internalID: 5784669937672489671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_27
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 199
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 654c05ba6bc845400800000000000000
+      internalID: 312028990381540438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_28
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 183
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6292395af20c6b3c0800000000000000
+      internalID: -4344073479678383834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_29
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 179
+        width: 31
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17dad47bd4467e120800000000000000
+      internalID: 2443031607822364017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_30
+      rect:
+        serializedVersion: 2
+        x: 1321
+        y: 179
+        width: 31
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4526d01dc28a02720800000000000000
+      internalID: 2819438277173273172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Card Parts_31
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 183
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d664022ebad33010800000000000000
+      internalID: 1167517238568445656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Card Parts_0: 2826514477226123342
+      Card Parts_1: -3903897537087385334
+      Card Parts_10: -4706355537438458000
+      Card Parts_11: -3949335598609407377
+      Card Parts_12: 8063180233875518666
+      Card Parts_13: -3015413500841631884
+      Card Parts_14: -7974835179270376054
+      Card Parts_15: -2493939067589309326
+      Card Parts_16: -4226986322801199326
+      Card Parts_17: 2018704907096444335
+      Card Parts_18: -4295479031499193284
+      Card Parts_19: -2230642167361874915
+      Card Parts_2: -8609234028982309204
+      Card Parts_20: 1658666585890451022
+      Card Parts_21: -2460560876217210086
+      Card Parts_22: 4680614275084887295
+      Card Parts_23: -4242742611210831520
+      Card Parts_24: -8101030444673714191
+      Card Parts_25: -3068213683412038267
+      Card Parts_26: 5784669937672489671
+      Card Parts_27: 312028990381540438
+      Card Parts_28: -4344073479678383834
+      Card Parts_29: 2443031607822364017
+      Card Parts_3: 8805943899190568700
+      Card Parts_30: 2819438277173273172
+      Card Parts_31: 1167517238568445656
+      Card Parts_4: -3312018466252136901
+      Card Parts_5: 5927827557609266187
+      Card Parts_6: -5194073847363104300
+      Card Parts_7: 7717720217513509435
+      Card Parts_8: -5776403976637503177
+      Card Parts_9: -3467764060128656113
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
