@@ -376,7 +376,7 @@ RectTransform:
   m_Father: {fileID: 203981379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.57831323, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -429,7 +429,6 @@ GameObject:
   - component: {fileID: 143057552}
   - component: {fileID: 143057554}
   - component: {fileID: 143057553}
-  - component: {fileID: 143057556}
   - component: {fileID: 143057555}
   m_Layer: 5
   m_Name: Settings
@@ -600,33 +599,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 143057553}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1535596042}
-        m_TargetAssemblyTypeName: MainMenuHandler, Assembly-CSharp
-        m_MethodName: OnClickSetting
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &143057556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143057551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3668dc25d5697ac43a5681ae76c73580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonSelected
-  selectedSize: {x: 1.2, y: 1.2, z: 1}
-  deselectedSize: {x: 1, y: 1, z: 1}
+      m_Calls: []
 --- !u!1 &146955428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,7 +1529,7 @@ MonoBehaviour:
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 1872937674}
-  m_HorizontalScrollbar: {fileID: 0}
+  m_HorizontalScrollbar: {fileID: 688404050}
   m_VerticalScrollbar: {fileID: 0}
   m_HorizontalScrollbarVisibility: 2
   m_VerticalScrollbarVisibility: 2
@@ -2412,7 +2385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &688404049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2476,8 +2449,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 112287718}
   m_HandleRect: {fileID: 112287717}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.57831323
+  m_Value: 0.9999998
+  m_Size: 0.5783133
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7775,7 +7748,6 @@ GameObject:
   - component: {fileID: 791842693}
   - component: {fileID: 791842695}
   - component: {fileID: 791842694}
-  - component: {fileID: 791842697}
   - component: {fileID: 791842696}
   m_Layer: 5
   m_Name: Quit
@@ -7946,33 +7918,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 791842694}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1535596042}
-        m_TargetAssemblyTypeName: MainMenuHandler, Assembly-CSharp
-        m_MethodName: OnClickPlay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &791842697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791842692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3668dc25d5697ac43a5681ae76c73580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonSelected
-  selectedSize: {x: 1.2, y: 1.2, z: 1}
-  deselectedSize: {x: 1, y: 1, z: 1}
+      m_Calls: []
 --- !u!1 &823628098
 GameObject:
   m_ObjectHideFlags: 0
@@ -8250,7 +8196,6 @@ GameObject:
   - component: {fileID: 870662343}
   - component: {fileID: 870662345}
   - component: {fileID: 870662344}
-  - component: {fileID: 870662347}
   - component: {fileID: 870662346}
   m_Layer: 5
   m_Name: Play
@@ -8421,33 +8366,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 870662344}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1535596042}
-        m_TargetAssemblyTypeName: MainMenuHandler, Assembly-CSharp
-        m_MethodName: OnClickPlay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &870662347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870662342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3668dc25d5697ac43a5681ae76c73580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButtonSelected
-  selectedSize: {x: 1.2, y: 1.2, z: 1}
-  deselectedSize: {x: 1, y: 1, z: 1}
+      m_Calls: []
 --- !u!1 &912291220
 GameObject:
   m_ObjectHideFlags: 0
@@ -9269,7 +9188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1399.9998, y: 0}
   m_SizeDelta: {x: 1400, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1205647627
@@ -14907,7 +14826,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1535596040}
   - component: {fileID: 1535596041}
-  - component: {fileID: 1535596042}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -14948,23 +14866,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1535596042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535596039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8474efab2def3c24ab65f6fef6734bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MainMenuHandler
-  mainMenuCanvasGroup: {fileID: 1535596041}
-  playCanvasGroup: {fileID: 2052671715}
-  settingCanvasGroup: {fileID: 1978598739}
-  quitCanvasGroup: {fileID: 0}
-  fadeDuration: 0.25
 --- !u!1 &1590524285
 GameObject:
   m_ObjectHideFlags: 0
@@ -15891,9 +15792,9 @@ RectTransform:
   m_Father: {fileID: 438775443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -17}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1872937675
 MonoBehaviour:
@@ -16408,7 +16309,6 @@ GameObject:
   - component: {fileID: 1978598738}
   - component: {fileID: 1978598737}
   - component: {fileID: 1978598739}
-  - component: {fileID: 1978598740}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -16486,32 +16386,9 @@ CanvasGroup:
   m_GameObject: {fileID: 1978598735}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1978598740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978598735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82cdb1cd12177374e876d07824c6115b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingMenuHandler
-  mainMenuCanvasGroup: {fileID: 1535596041}
-  settingMenuCanvasGroup: {fileID: 1978598739}
-  fadeDuration: 0.25
-  masterVolumeSlider: {fileID: 1758010676}
-  bgmVolumeSlider: {fileID: 1085686904}
-  sfxVolumeSlider: {fileID: 1421910781}
-  resolutionDropdown: {fileID: 1726936289}
-  audioMixer: {fileID: 24100000, guid: dbb906fb0cf11cf46830a1cabb62418d, type: 2}
-  masterVolumeParameter: Master
-  bgmVolumeParameter: BGN
-  sfxVolumeParameter: SFX
 --- !u!1 &1979497450
 GameObject:
   m_ObjectHideFlags: 0
@@ -16935,8 +16812,8 @@ CanvasGroup:
   m_GameObject: {fileID: 2052671713}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &2069326371
 GameObject:
