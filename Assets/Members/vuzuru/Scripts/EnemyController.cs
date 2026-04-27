@@ -92,11 +92,46 @@ public class EnemyController : MonoBehaviour
     private void MoveTowardsPlayer()
     {
         Vector2 direction = (player.position - transform.position).normalized;
-        rb.linearVelocity = direction * moveSpeed;
+        Vector2 separation = CalculateSeparation();
+        
+        // Combine movement direction with separation (separation has higher priority if very close)
+        Vector2 finalDirection = (direction + separation * 1.5f).normalized;
+        rb.linearVelocity = finalDirection * moveSpeed;
 
         // Rotation
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+    }
+
+    private Vector2 CalculateSeparation()
+    {
+        Vector2 separationDir = Vector2.zero;
+        float separationDistance = 0.8f; // Distance to keep from other enemies
+        
+        // Find nearby enemies
+        Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, separationDistance);
+        int count = 0;
+
+        foreach (var col in nearbyEnemies)
+        {
+            if (col.gameObject != gameObject && col.CompareTag(gameObject.tag)) // Same tag usually means same type/enemy
+            {
+                Vector2 diff = (Vector2)transform.position - (Vector2)col.transform.position;
+                float dist = diff.magnitude;
+                if (dist < 0.01f) diff = Random.insideUnitCircle.normalized; // Prevent zero div
+                
+                // Strength increases as they get closer
+                separationDir += diff.normalized / Mathf.Max(dist, 0.1f);
+                count++;
+            }
+        }
+
+        if (count > 0)
+        {
+            separationDir /= count;
+        }
+
+        return separationDir;
     }
 
     private void ApplyIdleJuice()

@@ -78,6 +78,41 @@ public class PlayerFeedback : MonoBehaviour
         juiceCoroutine = null;
     }
 
+    public void PlayParrySuccessJuice()
+    {
+        if (playerHealth.IsDying) return;
+        if (juiceCoroutine != null) StopCoroutine(juiceCoroutine);
+        juiceCoroutine = StartCoroutine(ParrySuccessRoutine());
+    }
+
+    private IEnumerator ParrySuccessRoutine()
+    {
+        float elapsed = 0;
+        float duration = 0.15f;
+        // 패링 성공 시에는 위아래로 쫀득하게 늘어났다가 돌아오는 느낌
+        Vector3 targetScale = new Vector3(originalScale.x * 0.7f, originalScale.y * 1.5f, originalScale.z);
+
+        if (sr != null) sr.color = Color.white;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            
+            if (t < 0.2f)
+                transform.localScale = Vector3.Lerp(originalScale, targetScale, t / 0.2f);
+            else
+                transform.localScale = Vector3.Lerp(targetScale, originalScale, (t - 0.2f) / 0.8f);
+
+            if (sr != null) sr.color = Color.Lerp(Color.white, originalColor, t);
+            yield return null;
+        }
+
+        transform.localScale = originalScale;
+        if (sr != null) sr.color = originalColor;
+        juiceCoroutine = null;
+    }
+
     public void PlayAttackJuice()
     {
         if (playerHealth.IsDying) return;

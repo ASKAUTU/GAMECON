@@ -9,10 +9,18 @@ public class Bullet : MonoBehaviour, IPoolable
     private float lifeTimer;
     private bool isActive = false;
 
+    private TrailRenderer trail;
+
+    private void Awake()
+    {
+        trail = GetComponentInChildren<TrailRenderer>();
+    }
+
     public void OnSpawn()
     {
         lifeTimer = lifeTime;
         isActive = true;
+        if (trail != null) trail.Clear();
     }
 
     public void OnReturnToPool()
