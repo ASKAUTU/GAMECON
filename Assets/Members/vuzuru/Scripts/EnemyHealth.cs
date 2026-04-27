@@ -5,11 +5,19 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealth = 30f;
     private float currentHealth;
+    private float expYield = 10f;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Color originalColor;
     
     public bool IsStunned { get; private set; }
+
+    public void Initialize(float hp, float exp)
+    {
+        maxHealth = hp;
+        currentHealth = hp;
+        expYield = exp;
+    }
 
     private void Awake()
     {
@@ -103,6 +111,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private void Die()
     {
         SpawnDeathVFX();
+        if (EXPManager.Instance != null)
+        {
+            EXPManager.Instance.SpawnEXP(transform.position, expYield);
+        }
         Destroy(gameObject);
     }
 
